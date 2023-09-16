@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>GNS</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+
+</head>
+<body >
+<style>
+    body {
+        font-family: Arial, Arial;
+        color: black;
+        font-size: 22px;
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center center;
+
+    }
+
+    main {
+        max-width: 700px;
+        margin: 0 auto;
+        padding: 20px;
+        box-shadow: 0px 1px 5px rgba(0, 0, 0, 8);
+        text-align: center;
+
+    }
+    div{
+        background-color: rgba(255, 255, 255, 0.3);
+    }
+
+</style>
+<main>
+
+    <form th:action="@{/save}" th:object="${agenda}" method="POST">
+        <div class="card-header">
+            <h3>
+                REGISTRO DE AUDITORIA
+            </h3>
+        </div>
+        <div class="form-group">
+            <label>ID</label>
+            <input th:field="*{id}" type="text" class="form-control" required>
+        </div>
+        <div class="form-group">
+            <label>NOMBRE DE LA AUDITORIA</label>
+            <input th:field="*{name_auditoria}" type="text" class="form-control" required>
+        </div>
+        <div class="form-group">
+            <label>ENTE DE CONTROL</label>
+            <input th:field="*{ente_control}" type="text" class="form-control" required>
+        </div>
+        <div class="form-group">
+            <label>FECHA INICIO</label>
+            <input th:field="*{fecha_inicio}" type="text" class="form-control datepicker" required>
+        </div>
+        <div class="form-group">
+            <label>FECHA FIN</label>
+            <input th:field="*{fecha_fin}" type="text" class="form-control datepicker" required>
+        </div>
+        <div class="form-group">
+            <label>ESTADO</label>
+            <input th:field="*{estado}" type="text" class="form-control datepicker" required>
+        </div>
+
+        <div class="card-footer">
+            <input type="submit" value="Guardar" class="btn btn-primary">
+            <a th:href="@{/listar}" class="btn btn-dark">Atras</a>
+        </div>
+    </form>
+</main>
+
+</body>
+
+</html>

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>GNS</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-datepicker@1.9.0/dist/css/bootstrap-datepicker.min.css" rel="stylesheet">
+
+</head>
+<style>
+    body {
+        font-family: Arial, Arial;
+        color: black;
+        font-size: 22px;
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center center;
+
+    }
+
+    main {
+        max-width: 700px;
+        margin: 0 auto;
+        padding: 20px;
+        box-shadow: 0px 0px 0px rgba(0, 0, 0, 0);
+        text-align: center;
+
+    }
+    div{
+        background-color: rgba(255, 255, 255, 0.3);
+    }
+
+</style>
+<main>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+            <a class="navbar-brand"
+               th:href="@{#}">
+                <i class="bi bi-airplane-fill"></i>
+                <spann class="text-primary">GNS</spann>
+            </a>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/formulario">Formulario</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/listar">Editor</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <form th:action="@{/save}" th:object="${agenda}" method="POST">
+        <div class="card-header">
+            <h3>
+                REGISTRO DE AUDITORIA
+            </h3>
+        </div>
+        <div class="form-group">
+            <label>ID</label>
+            <input th:field="*{id}" type="text" class="form-control" required>
+        </div>
+        <div class="form-group">
+            <label>NOMBRE DE LA AUDITORIA</label>
+            <input th:field="*{name_auditoria}" type="text" class="form-control" required>
+        </div>
+        <div class="form-group">
+            <label>ENTE DE CONTROL</label>
+            <input th:field="*{ente_control}" type="text" class="form-control" required>
+        </div>
+        <div class="form-group">
+            <label>FECHA INICIO</label>
+            <input th:field="*{fecha_inicio}" type="text" class="form-control datepicker" required>
+        </div>
+        <div class="form-group">
+            <label>FECHA FIN</label>
+            <input th:field="*{fecha_fin}" type="text" class="form-control datepicker" required>
+        </div>
+        <div class="form-group">
+            <label>ESTADO</label>
+            <input th:field="*{estado}" type="text" class="form-control datepicker" required>
+        </div>
+        <div class="card-footer">
+            <input type="submit" value="Guardar" class="btn btn-primary">
+            <a th:href="@{/listar}" class="btn btn-dark">Atras</a>
+        </div>
+
+    </form>
+</main>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap-datepicker@1.9.0/dist/js/bootstrap-datepicker.min.js"></script>
+
+<script>
+    $(document).ready(function () {
+        // Inicializar los campos de fecha como datepickers
+        $('.datepicker').datepicker({
+            format: 'yyyy-mm-dd', // Formato de fecha deseado (puedes cambiarlo según tus necesidades)
+            autoclose: true // Cierra automáticamente el selector de fecha después de seleccionar una fecha
+        });
+    });
+</script>
+
+</body>
+</html>
